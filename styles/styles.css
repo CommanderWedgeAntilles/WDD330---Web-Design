@@ -1,0 +1,18 @@
+/* HTML Selector*//*more specific as you go down*/
+ul{
+    list-style: none;
+}
+ul li:first-child{
+    display:block;
+
+}
+nav ul li {
+    display:none;
+}
+nav ul li a{
+    text-decoration: none;
+}
+
+/*Class Selectors*/
+
+/*Id Selector*/
