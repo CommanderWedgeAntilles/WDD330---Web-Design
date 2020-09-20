@@ -2,13 +2,6 @@
 ol{
     list-style: none;
 }
-ol li:first-child{
-    display:block;
-
-}
-nav ol li {
-    display:none;
-}
 nav ol li a{
     text-decoration: none;
 }
