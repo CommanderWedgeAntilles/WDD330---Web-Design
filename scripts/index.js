@@ -1,5 +1,5 @@
 //EventListeners
-document.querySelector('#menu').addEventListener('click',toggleMenu);
+//document.querySelector('#menu').addEventListener('click',toggleMenu);
 /*function declaration*/
 // function toggleMenu(){
 
@@ -10,14 +10,16 @@ document.querySelector('#menu').addEventListener('click',toggleMenu);
 
 // }
 
-function selectOL(){
-
-}
-
-function getList(){
-    
-
-}
+const links = [
+    {
+        label: "Week 01 notes",
+        url: "/week01/notes.html"
+    },
+    {
+        label: "Week 02 notes",
+        url: "/week02/notes.html"
+    }
+]
 
 function createList(){
     var list = document.getElementById("list")
@@ -34,13 +36,3 @@ function createList(){
 
 }
 
-const links = [
-    {
-        label: "Week 01 notes",
-        url: "/week01/notes.html"
-    },
-    {
-        label: "Week 02 notes",
-        url: "/week02/notes.html"
-    }
-]
