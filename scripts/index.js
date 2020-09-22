@@ -22,9 +22,12 @@ const links = [
 ];
 
 function createList(){
+    
     var list = document.getElementById("list")
+    
     document.getElementById("list").innerHTML = '<li><a href="#" id="menu">&equiv; Menu</a></li>'
-     for (i = 0; i <= links.length; i++)
+    //dynamic menu
+    for (i = 0; i <= links.length; i++)
      {
          document.getElementById("list").innerHTML = '<li><a href="'
          + links[i].url 
