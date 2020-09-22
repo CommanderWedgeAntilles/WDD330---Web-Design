@@ -27,7 +27,7 @@ function createList(){
     
     document.getElementById("list").innerHTML = '<li><a href="#" id="menu">&equiv; Menu</a></li>'
     //dynamic menu
-    for (i = 0; i <= links.length; i++)
+    for (let i = 0; i <= links.length; i++)
      {
          document.getElementById("list").innerHTML = '<li><a href="'
          + links[i].url 
