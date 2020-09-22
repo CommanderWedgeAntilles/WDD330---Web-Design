@@ -19,7 +19,7 @@ const links = [
         label: "Week 02 notes",
         url: "/week02/notes.html"
     }
-]
+];
 
 function createList(){
     var list = document.getElementById("list")
