@@ -38,4 +38,5 @@ function createList(){
      }
 
 }
+createList();
 
