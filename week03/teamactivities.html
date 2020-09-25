@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+    <input type="number" name="inputName"><br>
+    <button type="submit" onclick="getNum()">Submit</button>
+
+    <input type="number" name="input2"><br>
+    <p>+</p>
+    <input type="number" name="input3"><br>
+    <p>=</p> 
+    <button type="submit">Add</button> 
+    <div id="a">
+        <script>
+            function AddMachine(){
+                number2 = Document.getElementById(input2); 
+                number3 = Document.getElementById(input3);
+
+                var sum = number2 + number3; 
+                Document.getElementById("a").innerHTML = "<p> sum ="+ sum +"</p>";
+            }
+        </script>
+    </div>
+
+    <div id="b">
+        <script src="js/scripts.js">
+
+        function getNum(){
+            var number = Document.getElementById(inputName);
+            var addNumber = 0;
+            
+            for (var i=0; i <= number; i++){
+                addNumber += i;
+                print(i);
+            }
+            print(addNumber);
+            Document.getElementById("b").innerHTML = "<p>new number = "+ addNumber +"</p>";               
+        }
+
+        
+        </script>
+    </div>
+</body>
+</html>
