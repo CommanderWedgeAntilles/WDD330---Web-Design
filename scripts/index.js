@@ -34,7 +34,7 @@ function createList(){
     //dynamic menu
     for (let i = 0; i <= links.length; i++)
      {
-         document.getElementById("list").innerHTML = '<li><a href="'
+         document.getElementById("list").innerHTML += '<li><a href="'
          + links[i].url 
          +'">'
          + links[i].label
