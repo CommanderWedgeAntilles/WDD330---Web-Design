@@ -16,9 +16,14 @@ const links = [
         url: "week01/notes.html"
     },
     {
-        label: "Week 02 notes",
+        label: "Week 02 Notes",
         url: "week02/notes.html"
+    },
+    {
+        label: "Week 03 Notes",
+        url: "week03/notes.html"
     }
+
 ];
 
 function createList(){
