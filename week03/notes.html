@@ -13,5 +13,72 @@
             </ol>
         </nav>
         <h1>Week 03: Notes</h1>
+            <h2>Preface</h2>
+                <p>
+                    This week we worked on understanding how scope, and variables work.
+                    The readings asked us to work with arrays and loops to resolve several
+                    solutions and how the use of functions and callbacks work when using javascript
+                    to change an html document. I reviewed some stuff seperatly in order to catch
+                    up on my javascript deployment. I installed Node 
+                </p>
+            <h2>Readings</h2>
+                <ul>
+                    <li>
+                        Javascript has nothing to do with Java. Created by Netscape in Browser wars.
+                    </li>
+                    <li>
+                        Popular due to its low barrier of entry into web programming.
+                    </li>
+                    <li>
+                        Node.js created in 2009 to supplement it
+                    </li>
+                    <li>
+                        install node using "npm" and then use node to install Babel
+                        in order to allow your code to be viewed on a wide variety of browsers
+                    </li>
+                </ul>
+                    <h3>
+                        Installing What You Need
+                    </h3>
+
+                        <h4>Step 1: Install Build Tools:</h4>
+                            <p>use cmd for windows devices</p>
+                        <h4>Step 2: Install nvm</h4>
+                            <p>
+                                run the following: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash 
+                                <br>
+                                than reload the shell and install node "nvm install node"
+                                <br>
+                                once finished run "node -v"
+                            </p>
+                            <a href="https://nodejs.org/en/download/">Click this for the easy install</a>
+                <ul>
+                    <li>
+                        You can use Javascript in the console "REPL"
+                    </li>
+                    <li>
+                        To exit REPL hold ctrl and hit "C" twice
+                    </li>
+                    <li>
+                        This is a program the reading asked me to make.
+                        <script>console.log('Hello World!');</script>
+                    </li>
+                </ul>
+
+                        <button id='button'>click me</button>
+                        <script>
+                            const btn = document.getElementById('button');
+                            const rainbow = ['red','orange','yellow','green','blue','rebeccapurple','violet'];
+                            function change() {      
+                                document.body.style.background = rainbow[Math.floor(7*Math.random())];
+                            }
+                            btn.addEventListener('click', change);
+                        </script>
+
+            <h2>Teamwork</h2>
+                <p>
+                    We worked together to complete the following activity. Whitney Chase and I were present but Jose was not.
+                </p>
+                <a href="week03/teamwork/teamactivities.html">Class Work</a>   
     </body>
 </html>
