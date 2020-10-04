@@ -9,13 +9,169 @@
         <nav>
             <ol>
                 <li><a href="../index.html">index</a></li>
-                <li><a href="week04/teamwork/team.html">Class Work</a></li>
+                <li><a href="week04/teamwork/team.html">Team Work</a></li>
             </ol>
         </nav>
         <h1>Week 04: Notes</h1>
             <h2>Preface</h2>
                 <p>
-
+                    This week we learned about Javascript Objects and did a team project
+                    focusing on filtering and organizing tools for arrays using Javascript.
+                    We also learned about Events for javascript and ran several exersises.
                 </p>
-    </body>
+            <h2>Reading</h2>
+                <h3>THIS</h3>
+                    <p>THIS is a keyword which value changes depending on how a function gets called.</p>
+                    <ol>
+                        <li>THIS in a global context</li>
+                        <li>THIS in object construction</li>
+                        <li>THIS in an object method</li>
+                        <li>THIS in a simple function</li>
+                        <li>THIS in an arrow function</li>
+                        <li>THIS in an event listener</li>
+                    </ol>
+                    <h4>Global</h4>
+                        <ul>
+                            <li>called outside of any function</li>
+                            <li>defaults to the WINDOW object</li>
+                        </ul>
+                    <h4>Object Construction</h4>
+                        <ul>
+                            <li>when you use NEW to create an object, This points to that object</li>
+                            <li>Example: (see console log)</li>
+                            <script>
+                                function Human(age){this.age = age;}
+                                let greg = new Human(22);
+                                let tom = new Human(25);
+                                console.log(greg);
+                                console.log(tom);
+                            </script>
+                            <li>Greg and Tom will never be mixed up so using THIS is ok</li>
+                        </ul>
+                    <h4>Object Method</h4>
+                        <ul>
+                            <li>Methods are funtions which are a part of an object</li>
+                            <li>THIS within any object refers to the object itself.</li>
+                            <li>Example: (see console log)</li>
+                            <script>
+                                function Human(name){
+                                    return {
+                                        name,
+                                        getName(){
+                                            return this.name;
+                                        }
+                                    }
+                                }
+                                const mike = new Human('Mike');
+                                const anne = new Human('Anne');
+                                console.log(mike.getName());
+                            </script>
+                        </ul>
+                    <h4>Simple Function</h4>
+                        <ul>
+                            <li>simple functions are the functions we normally use</li>
+                            <li>THIS refers to WINDOW in simple functions</li>
+                            <li>this is an odd change and unintuitive</li>
+                            <li>Example: (see console log)</li>
+                            <script>function simplefunction(){console.log(this);}</script>
+                            <li>//In order to get This to work as intended you have to assign it to an variable aas follows:</li>
+                            <script>
+                                //In order to get This to work as intended you have to assign it to an object
+                                const o = {
+                                    doSomethingLater () {
+                                        const self = this
+                                        setTimeout(function() {
+                                        self.speakLeet()
+                                        }, 1000)
+                                    },
+                                    speakLeet() {
+                                        console.log(`1337 15 4W350M3`)
+                                    }
+                                }
+                            </script>
+                        </ul>
+                    <h4>Arrow Functions</h4>
+                        <ul>
+                            <li>the this in an arrow function is the same this in its immediate scope.</li>
+                            <li>for example in an object method, the THIS context stays the object, not WINDOW</li>
+                            <li>For Example:</li>
+                            <script>
+                                const o = {
+                                    doSomethingLater () {
+                                    setTimeout(() => this.speakLeet(), 1000)
+                                    },
+                                    speakLeet() {
+                                    console.log(`1337 15 4W350M3`)
+                                    }
+                                }
+                            </script>
+                        </ul>
+                    <h4>Event Listeners</h4>
+                        <ul>
+                            <li>When this is set to the event which fired the eveny in an event listener.</li>
+                            <li>For Example:</li>
+                            <script>
+                                let button = document.querySelector('button')
+
+                                button.addEventListener('click', function() {
+                                console.log(this) // button
+                                })
+                            </script>
+                            <li>when using THIS inside a Method to do what you want you must do the following:</li>
+                            <script>
+                                function LeetSpeaker (elem) {
+                                    return {
+                                        listenClick () {
+                                        const self = this
+                                        elem.addEventListener('click', function () {
+                                            self.speakLeet()
+                                        })
+                                        },
+                                        speakLeet() { console.log(`1337 15 4W350M3`) }
+                                    }
+                                }
+                            </script>
+                            <li>You can also use an arrow function as follows:</li>
+                            <script>
+                                function LeetSpeaker (elem) {
+                                    return {
+                                        listenClick () {
+                                        elem.addEventListener('click', (e) => {
+                                            console.log(e.currentTarget) // elem
+                                            this.speakLeet()
+                                        })
+                                        },
+                                        speakLeet() { console.log(`1337 15 4W350M3`) }
+                                    }
+                                }
+                            </script>
+                            <li>Both methods don't help you remove event listeners. To remove an event listener, the callback passed as the second value needs to be a named function.</li>
+                            <li>if you need to use THIS to reference the object of an event listener, you need to use BIND to manually create a THIS context.</li>
+                            <script>
+                                function LeetSpeaker (elem) {
+                                    return {
+                                    listenClick () {
+                                        this.listener = this.speakLeet.bind(this)
+                                        elem.addEventListener('click', this.listener)
+                                    },
+                                
+                                    speakLeet(e) {
+                                        const elem = e.currentTarget
+                                        console.log(`1337 15 4W350M3`)
+                                        elem.removeEventListener('click', this.listener)
+                                    }
+                                    }
+                                }
+                            </script>
+                            <li>BIND is a method that allows you to change the THIS context at will. It takes in any number of arguments and returns the bound function.</li>
+                            <script>
+                                function sayThis () {
+                                    console.log(this)
+                                }
+                                const boundFunc = sayThis.bind({hippy: 'hipster'})
+                                boundFunc()
+                            </script>
+                        </ul>
+                </body>
+
 </html>
