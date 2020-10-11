@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Week 03: Notes</title>
+        <title>Week 05: Notes</title>
     </head>
     <body>
         <nav>
@@ -57,7 +57,7 @@
                     <input type='image' src='button.png'>
                     <button type='reset'>Reset</button>
                 <h3>Form Events</h3>
-                    <p>The focus event occurs when an element is focused on. In the case of an <input> element, this is when the cursor is placed inside the element (either by clicking or tapping on it or navigating to it using the keyboard). To see an example, add the following code to main.js :</p>
+                    <p>The focus event occurs when an element is focused on. In the case of an input element, this is when the cursor is placed inside the element (either by clicking or tapping on it or navigating to it using the keyboard). To see an example, add the following code to main.js :</p>
                     <p>const input = form.elements.searchInput;<br>input.addEventListener('focus', () => alert('focused'), false);</p>
                     <ul>
                         <li>The blur event occurs when the user moves the focus away from the form element. Add the following to main.js , reload the page, and then move the cursor away from the search box:</li>
@@ -67,6 +67,23 @@
                         <li>Note that the blur event will also fire, but after the change event.</li>
                     </ul>
                 <h3>Submitting a Form</h3>
+                    <ul>
+                        <li>Possibly the most important form event is the submit event, occurring when the form is submitted. Usually this will send the content of the form to the server to be processed, but we can use JavaScript to intercept the form before it’s sent by adding a submit event listener.</li>
+                        <li>Now reload the page and click on theSubmitbutton. You should see an alert dialog sayingForm Submitted. After you clickOK, the browser tries to load a nonexistent page (the URL should end in something similar to '.../search?searchInput=hello'). This is because when the event fired, our search() function was invoked, displaying the alert dialog. Then the form was submitted to the URL provided in the 'action' attribute for processing, but in this case, the URL isn't a real URL, so it doesn't go anywhere. Back-end processing isn't covered in this book, so we'll keep this as a 'dummy' URL and focus on using JavaScript to process the information instead.</li> 
+                    </ul>
+                <h3>Retrieving and Changing Values From a Form</h3>
+                    <ul>
+                        <li>text input elements have a value property tied to them</li>
+                        <li>the default text will disappear when the user clicks inside the input field (the focus event) and reappear if the user leaves the field blank and clicks away from it (the blur event).</li>
+                        <li>input.value</li>
+                    </ul>
+                <h3>placeholder Attribute</h3>
+                    <ul>
+                        <li>Similar functionality can be produced in modern browsers using the placeholder attribute in the HTML markup. Simply change the input field to the following in search.html :</li>
+                        <input type='text' name='search-box' placeholder='Search Here'>
+                        <li>This works better than the javascript version if you with to avoid  default submissions</li>
+                    </ul>
+                <h3>Form Controls</h3>
                     <ul>
                         <li></li>
                     </ul>
