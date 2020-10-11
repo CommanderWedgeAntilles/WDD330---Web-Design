@@ -16,6 +16,41 @@
             <h2>Preface</h2>
                 <p>
                 </p>
+            <h2>Readings</h2>
+                <h3>Forms</h3>
+                    <ul>
+                        <li>Forms are places to in take input from the user</li>
+                        <li>they include input fields, select menus and buttons.</li>
+                        <li>The act of proceesing input from the user used to be soley handled in the backedn but it is now more common to be handled in the front end</li>
+                        <li>Example:</li>
+                        <form name='search' action='search'>
+                            <input name='searchinput'>
+                            <button type='submit'>Search</button>
+                        </form>
+                    </ul>>
+                <h3>Accessing Form Elements</h3>
+                    <ul> 
+                        <li>DOM has a feature called document.forms[] that returns an html collection of all the forms in the documentin the order they appear in the markup </li>
+                        <li>to accesss a specific form you can use index notation: const form = document.form[0];</li>
+                        <li>This is the same as const form = document.getElementsByTagname('form')[0];</li>
+                        <li> you can also use the "name" attribute to identify a form: const form = document.forms.search; will access the form created above.</li>
+                        <li>const form = document.forms['search']; is a way to do this safely without calling two things at once</li>
+                        <li>"A form object also has a method called elements that returns an HTML collection of all the elements contained in the form. In this case the form contains two controls: an input element and a button element:
+
+                            const [input,button] = form.elements;
+                            We can also access the form controls using their 'name' attributes as if it was a property of the form object. So, for example, the input field has a name attribute of searchInput and can be accessed using this code:
+                            
+                            const input = form.searchInput
+                            The square bracket notation can also be used instead (again, this is useful if there are any naming clashes with existing property and method names, or if the name is an invalid variable name):
+                            
+                            const input = form['searchInput']"
+                        </li>
+                    </ul>
+                <h3>Form Properties and Methods</h3>
+                    <ul>
+                        <li></li>
+                    </ul>
+        <script src='main.js'></script>
     </body>
 </html>
                 
