@@ -48,6 +48,26 @@
                     </ul>
                 <h3>Form Properties and Methods</h3>
                     <ul>
+                        <li>form.submit() will submit the form automatically</li>
+                        <li>form.reset() will reset all the form controls back to their initial value</li>
+                        <li>"Reset buttons are generally considered poor for usability, as they are too easy to click and then wipe out all the data that’s been entered. So think very carefully before using one in a form."</li>
+                    </ul>
+                    <button type='submit'>Submit</button>
+                    <input type='submit' value='Submit'>
+                    <input type='image' src='button.png'>
+                    <button type='reset'>Reset</button>
+                <h3>Form Events</h3>
+                    <p>The focus event occurs when an element is focused on. In the case of an <input> element, this is when the cursor is placed inside the element (either by clicking or tapping on it or navigating to it using the keyboard). To see an example, add the following code to main.js :</p>
+                    <p>const input = form.elements.searchInput;<br>input.addEventListener('focus', () => alert('focused'), false);</p>
+                    <ul>
+                        <li>The blur event occurs when the user moves the focus away from the form element. Add the following to main.js , reload the page, and then move the cursor away from the search box:</li>
+                        <li>input.addEventListener('blur', () => alert('blurred'), false);</li>
+                        <li>The change event occurs when the user moves the focus away from the form elementafter changing it. So if a user clicks in an input field and makes no changes, and then clicks elsewhere, the change event won’t fire, but the blur event will.</li>
+                        <li>input.addEventListener('change', () => alert('changed'), false);</li>
+                        <li>Note that the blur event will also fire, but after the change event.</li>
+                    </ul>
+                <h3>Submitting a Form</h3>
+                    <ul>
                         <li></li>
                     </ul>
         <script src='main.js'></script>
