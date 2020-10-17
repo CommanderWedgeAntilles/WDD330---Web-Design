@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 05: Notes</title>
+    </head>
+    <body>
+        <nav>
+            <ol>
+                <li><a href="../index.html">index</a></li>
+                <li><a href="team/index.html">Class Work</a></li>
+            </ol>
+        </nav>
+        <h1>Week 05: Notes</h1>
+            <h2>Preface</h2>
+                <p>
+                </p>
+            <h2>Reading: Testing and Debugging</h2>
+                <h3>Errors, Exceptions, and Warnings</h3>
+                    <ul>
+                        <li>System error - there is a problem with the system or external devices</li>
+                        <li>Programmer error - program contains incorrect syntax or faulty logic</li>
+                        <li>User error - user entered the data wrong</li>
+                    </ul>
+                <h3>Exceptions</h3>
+                    <p>
+                        An error that produces a return value that can be used to deal with the error.
+                         A non-existant method could result in a reference error -> and exception 
+                        which will let the programmer know what is wrong.
+                    </p>
+                <h3>Stack Traces</h3>
+                    <p>
+                        A sequence of functions or method calls that lead to the point where the error took place, produced by an exception.
+                        Stack trace works backward from the point where the error occurs to identify the origional function or method that started the sequence.
+                        The following error was triggered by invoking function one() in the first place.
+                    </p>
+                    <script>
+                        function three(){ unicorn(); }
+                        function two(){ three(); }
+                        function one(){ two(); }
+                        one();
+                    </script>
+                <h3>Warnings</h3>
+                    <p>
+                        warnings are triggered when there is an issue which is not enough to crash the program. 
+                        The program continues to run but the issue persists.
+                    </p>
+                    <script>
+                        pi=3.142;
+                    </script>
+                    <p> 
+                        when a runtime error occurs in the browser, the html continues but the JavaScript code ceases to function.
+                        If a warning occurs, the JavaScript will continue to run.
+                    </p>
+                <h3>Importance of Testing and Debugging</h3>
+                    <p>
+                        Because JavaScript fails quietly it is easy to miss mistakes. Make sure that the code you write fails loudly.
+                    </p>
+                <h3>Strict Mode</h3>
+                    <p>
+                        'use strict'; is a a mode which forces the programmer to deal with mistakes early and often. 
+                        It is the recommended means to write better quality JavaScript.
+                    </p>
+                    <script>
+                        'use strict';
+                        e = 2.718;
+                        function strictly(){'use strict';}
+                        //this is the recommended way to write all JavaScript
+                        (function() {
+                            'use strict';
+                            // All your code would go inside this function
+                        }());
+                    </script>
+                <h3>Linting Tools</h3>
+                    <ul>
+                        <li>Js Lint, JS Hint, Es Lint  can be used to test the quality of JavaScript code, beyond using strict mode.</li>
+                        <li>They are designed to highlight sloppy programming practices or syntax errors.</li>
+                        <li>They can be unforgiving and use some opinionated coding conventions, such as not using the ++ and -- increment operators.</li>
+                        <li>You can use online linting tools and test-editor plugins. you can also use npm to install linting software</li>
+                    </ul>
+                <h3>Feature Detection</h3>
+                    <p>
+                        You can detect what features a browser supports using feature detection.
+                        This is done using an if statement to check whether an object or method exists before trying to actually call the method.
+                        the following is an example of this:
+                    </p>
+                    <script>
+                        if (window.holoDeck) {
+                            virtualReality.activate();
+                        }
+                    </script>
+                    <p>
+                        This makes sure that no errors occur if the browser doesn't support the method, referencing a nonexistant object such as window.virtualReality will return undefined.
+                        Modernizer is a libray that offers an easy way to implement feature detection and Can I Use? is another useful resource for checking which featrures are currently supported.
+                    </p>
+                <h3>Debugging the Browser</h3>
+                <h3>The Trusty Alert</h3>
+                <h3>Using the Console</h3>
+                <h3>Debugging Tools</h3>
+                <h3>Error Objects</h3>
+                <h3>Throwing Exceptions</h3>
+                <h3>Exception Handling</h3>
+                <h3>Tests</h3>
+                <h3>Test-driven Development</h3>
+                <h3>Jest</h3>
+                <h3>Crunching Some Numbers</h3>
+                <h3>Quiz Ninja Project</h3>
+    </body>
+</html>
