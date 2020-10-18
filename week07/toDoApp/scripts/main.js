@@ -55,8 +55,6 @@ function display(){
     //dynamic menu
     for (let i = 0; i <= toDoList.length; i++)
      {
-         temp = new Todo(Date.now(),"Default Task",false);
-         temp = toDoList[i];
          list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
          + ' onclick="checkIt('
@@ -64,11 +62,11 @@ function display(){
          + ')" name="todo'
          + i
          + ' value="'
-         + temp.completed
+         + toDoList[i].completed
          + '"><label for="todo'
          + i
          + '">'
-         + temp.content
+         + toDoList[i].content
          + '</label></form>'
      }
 }
