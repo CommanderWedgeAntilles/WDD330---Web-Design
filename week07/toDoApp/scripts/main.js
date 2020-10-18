@@ -11,7 +11,7 @@ toDoList.push(todo);
 
 //add an item to the list
 const addForm = document.forms['addItem'];
-addForm.addEventListener('add', addIt, false);
+
 
 //add function
 function addIt(){
@@ -26,6 +26,8 @@ function addIt(){
     toDoList.push(newToDo);
     display();
 }
+
+addForm.addEventListener('add', addIt, false);
 
 function checkIt(i){
         var idVal = "todo"+i;  
