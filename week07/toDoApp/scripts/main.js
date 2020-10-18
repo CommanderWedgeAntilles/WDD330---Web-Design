@@ -13,6 +13,7 @@ toDoList.push(todo);
 const addForm = document.forms['addItem'];
 addForm.addEventListener('add', add, false);
 
+//add function
 function add(){
     const newToDo = {}
     newToDo.id = Date.now();
@@ -23,6 +24,7 @@ function add(){
         else{newToDo.completed = false;}
     }
     toDoList.push(newToDo);
+    display();
 }
 
 function checkIt(i){
@@ -36,7 +38,7 @@ function checkIt(i){
             document.getElementById(idval).style.textDecoration = "none";
 
         }
-        display()
+        display();
     }
 
 //display the toDo list
@@ -64,4 +66,4 @@ function display(){
      }
      document.list.innerHTML += '</form>';
 }
-display()
+display();
