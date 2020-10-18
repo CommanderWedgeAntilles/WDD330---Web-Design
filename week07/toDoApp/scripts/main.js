@@ -61,7 +61,7 @@ function display(){
     for (let i = 0; i <= toDoList.length; i++)
      {
          var temp = new todo();
-         temp = toDoList[i];
+         temp.transfer(toDoList[i]);
          list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
          + ' onclick="checkIt('
