@@ -49,7 +49,7 @@ function display(){
      {
          document.list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
-         + 'onclick="checkIt("
+         + 'onclick="checkIt('
          + i
          + ')" name="todo'
          + i
