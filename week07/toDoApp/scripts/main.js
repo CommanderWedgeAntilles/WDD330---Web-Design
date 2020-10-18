@@ -31,7 +31,7 @@ function addIt(){
     display();
 }
 
-addForm.addEventListener('add', addIt, false);
+addForm.addEventListener('addi', addIt, false);
 
 function checkIt(i){
         var idVal = "todo"+i;  
