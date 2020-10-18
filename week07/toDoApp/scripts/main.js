@@ -11,10 +11,10 @@ toDoList.push(todo);
 
 //add an item to the list
 const addForm = document.forms['addItem'];
-addForm.addEventListener('add', add, false);
+addForm.addEventListener('add', addIt, false);
 
 //add function
-function add(){
+function addIt(){
     const newToDo = {}
     newToDo.id = Date.now();
     newToDo.content = addform.addInput.value;
