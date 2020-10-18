@@ -53,7 +53,7 @@ function display(){
     var list = document.getElementById("toDoList")
     
     //dynamic menu
-    for (let i = 0; i <= toDoList.length; i++)
+    for (let i = 0; i < toDoList.length; i++)
      {
          list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
