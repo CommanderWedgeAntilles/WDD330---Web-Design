@@ -2,9 +2,20 @@
 //get the list array ready
 //create the todo object
 var toDoList = new Array();
-const todo = {id: Date.now(), content: "Default Task", completed:false, complete: function(){
-    if(this.completed == false){this.completed = true;}
-    else{this.completed = false;}}
+const todo = {
+    id: Date.now(), 
+    content: "Default Task", 
+    completed:false, 
+    TODO: function(nID, nContent, nCompleted){
+        this.id=nID; 
+        this.content = nContent; 
+        this.completed = nCompleted;
+    }, 
+    complete: function(){
+        if(this.completed == false){this.completed = true;}
+        else{this.completed = false;}
+    },
+    get comp(){return this.completed;}
 };
 toDoList.push(todo);
 
@@ -14,15 +25,10 @@ const addForm = document.forms['addItem'];
 
 //add function
 function addIt(){
-    const newToDo = new todo{}
-    newToDo.id = Date.now();
-    newToDo.content = document.getElementById('addInput').value;
-    newToDo.completed = false;
-    newToDo.complete = function(){
-        if(newToDo.completed == false){newToDo.completed = true;}
-        else{newToDo.completed = false;}
-    }
+    const newToDo = new todo(Date.now(), document.getElementById('addInput').value, false);
+    
     toDoList.push(newToDo);
+    
     display();
 }
 
