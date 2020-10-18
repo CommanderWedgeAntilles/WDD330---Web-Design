@@ -2,26 +2,21 @@
 //get the list array ready
 //create the todo object
 var toDoList = [];
-const todo = {
-    id: Date.now(), 
-    content: "Default Task", 
-    completed:false, 
-    todo: function(nID, nContent, nCompleted){
+class Todo {
+    constructor(nID, nContent, nCompleted){
         this.id=nID; 
         this.content = nContent; 
         this.completed = nCompleted;
-    }, 
-    complete: function(){
+    } 
+    complete(){
         if(this.completed == false){this.completed = true;}
         else{this.completed = false;}
-    },
-    transfer: function(ntodo){this.id=ntodo.id; 
-        this.content = ntodo.content; 
-        this.completed = ntodo.completed;
-    },
-    get comp(){return this.completed;}
-};
-toDoList.push(todo);
+    }
+    comp(){return this.completed;}
+}
+
+var dToDo = new Todo(Date.now(),"Default Task",false);
+toDoList.push(dToDo);
 
 //add an item to the list
 const addForm = document.forms['addItem'];
@@ -29,7 +24,7 @@ const addForm = document.forms['addItem'];
 
 //add function
 function addIt(){
-    const newToDo = new todo(Date.now(), document.getElementById('addInput').value, false);
+    const newToDo = new Todo(Date.now(), document.getElementById('addInput').value, false);
     
     toDoList.push(newToDo);
 
@@ -60,8 +55,8 @@ function display(){
     //dynamic menu
     for (let i = 0; i <= toDoList.length; i++)
      {
-         var temp = new todo();
-         temp.transfer(toDoList[i]);
+         temp = new Todo(Date.now(),"Default Task",false);
+         temp = toDoList[i];
          list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
          + ' onclick="checkIt('
@@ -69,11 +64,11 @@ function display(){
          + ')" name="todo'
          + i
          + ' value="'
-         + temp.completed
+         + toDoList[i].completed
          + '"><label for="todo'
          + i
          + '">'
-         + temp.content
+         + toDoList[i].content
          + '</label></form>'
      }
 }
