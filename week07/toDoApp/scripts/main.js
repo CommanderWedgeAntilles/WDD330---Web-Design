@@ -17,7 +17,7 @@ const addForm = document.forms['addItem'];
 function addIt(){
     const newToDo = {}
     newToDo.id = Date.now();
-    newToDo.content = addform.addInput.value;
+    newToDo.content = document.getElementById('addInput').value;
     newToDo.completed = false;
     newToDo.complete = function(){
         if(newToDo.completed == false){newToDo.completed = true;}
