@@ -57,11 +57,11 @@ function display(){
      {
          list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
-         + ' onclick="checkIt('
+         + '" onclick="checkIt('
          + i
          + ')" name="todo'
          + i
-         + ' value="'
+         + '" value="'
          + toDoList[i].completed
          + '"><label for="todo'
          + i
