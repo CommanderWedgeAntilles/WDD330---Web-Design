@@ -46,11 +46,11 @@ function display(){
 
     var list = document.getElementById("toDoList")
     
-    document.list.innerHTML += '<form>';
+    list.innerHTML += '<form>';
     //dynamic menu
     for (let i = 0; i <= toDoList.length; i++)
      {
-         document.list.innerHTML += '<input type = "checkbox" id ="todo'
+         list.innerHTML += '<input type = "checkbox" id ="todo'
          + i
          + 'onclick="checkIt('
          + i
@@ -64,6 +64,6 @@ function display(){
          + toDoList[i].content
          + '</label>'
      }
-     document.list.innerHTML += '</form>';
+     list.innerHTML += '</form>';
 }
 display();
