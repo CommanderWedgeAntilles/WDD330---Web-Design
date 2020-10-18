@@ -32,10 +32,11 @@ function checkIt(i){
         var checked = document.getElementById(idval).value;
         if (checked == true){
             toDoList[i].complete();
-            document.getElementById(idval).style.textDecoration = "line-through";
+            document.getElementById(idval).style.textDecoration = "none";
         }else{
             toDoList[i].complete();
-            document.getElementById(idval).style.textDecoration = "none";
+            //swap back later
+            document.getElementById(idval).style.textDecoration = "line-through";
 
         }
         display();
