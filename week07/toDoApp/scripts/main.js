@@ -2,11 +2,10 @@
 //get the list array ready
 //create the todo object
 var toDoList = new Array();
-const todo = {id: Date.now(), content: "Default Task", completed:false};
-todo.complete = function(){
+const todo = {id: Date.now(), content: "Default Task", completed:false, complete: function(){
     if(todo.completed == false){todo.completed = true;}
     else{todo.completed = false;}
-}
+}};
 toDoList.push(todo);
 
 //add an item to the list
@@ -15,7 +14,7 @@ const addForm = document.forms['addItem'];
 
 //add function
 function addIt(){
-    const newToDo = {}
+    const newToDo = new todo{}
     newToDo.id = Date.now();
     newToDo.content = document.getElementById('addInput').value;
     newToDo.completed = false;
