@@ -46,8 +46,8 @@ function checkIt(i){
         }
         display();
     }
-    
-for(let i=0;i<toDoList.length; i++){
+
+for(let i=0; i < toDoList.length; i++){
     var idVal = "todo"+i;
     document.getElementById(idval).addEventListener('change', addIt, false);
 }
