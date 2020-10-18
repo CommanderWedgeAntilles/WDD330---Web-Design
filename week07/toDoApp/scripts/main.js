@@ -47,11 +47,10 @@ function display(){
 
     var list = document.getElementById("toDoList")
     
-    list.innerHTML += '<form>';
     //dynamic menu
     for (let i = 0; i <= toDoList.length; i++)
      {
-         list.innerHTML += '<input type = "checkbox" id ="todo'
+         list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
          + 'onclick="checkIt('
          + i
@@ -63,8 +62,7 @@ function display(){
          + i
          + '">'
          + toDoList[i].content
-         + '</label>'
+         + '</label></form>'
      }
-     list.innerHTML += '</form>';
 }
 display();
