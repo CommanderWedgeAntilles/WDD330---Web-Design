@@ -32,6 +32,7 @@ function addIt(){
 }
 
 
+addForm.addEventListener('add', addIt(), false);
 
 function checkIt(i){
         var idVal = "todo"+i;  
@@ -49,8 +50,12 @@ function checkIt(i){
 
 for(let i=0; i < toDoList.length; i++){
     var idVal = "todo"+i;
-    document.getElementById(idval).addEventListener('change', addIt, false);
+    document.getElementById(idval).addEventListener('change', checkIt(i), false);
 }
+
+
+
+
 //display the toDo list
 function display(){
 
