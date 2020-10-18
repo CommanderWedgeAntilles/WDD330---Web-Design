@@ -19,8 +19,8 @@ function add(){
     newToDo.content = addform.addInput.value;
     newToDo.completed = false;
     newToDo.complete = function(){
-        if(todo.completed == false){todo.completed = true;}
-        else{todo.completed = false;}
+        if(newToDo.completed == false){newToDo.completed = true;}
+        else{newToDo.completed = false;}
     }
     toDoList.push(newToDo);
 }
