@@ -4,8 +4,8 @@
 var toDoList = new Array();
 const todo = {id: Date.now(), content: "Default Task", completed:false, complete: function(){
     if(todo.completed == false){todo.completed = true;}
-    else{todo.completed = false;}
-}};
+    else{todo.completed = false;}}
+};
 toDoList.push(todo);
 
 //add an item to the list
