@@ -64,11 +64,11 @@ function display(){
          + ')" name="todo'
          + i
          + ' value="'
-         + toDoList[i].completed
+         + temp.completed
          + '"><label for="todo'
          + i
          + '">'
-         + toDoList[i].content
+         + temp.content
          + '</label></form>'
      }
 }
