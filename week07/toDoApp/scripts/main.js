@@ -1,7 +1,7 @@
 
 //get the list array ready
 //create the todo object
-var toDoList = new Array();
+var toDoList = [];
 const todo = {
     id: Date.now(), 
     content: "Default Task", 
@@ -28,7 +28,7 @@ function addIt(){
     const newToDo = new todo(Date.now(), document.getElementById('addInput').value, false);
     
     toDoList.push(newToDo);
-    
+
     display();
 }
 
@@ -39,11 +39,10 @@ function checkIt(i){
         var checked = document.getElementById(idval).value;
         if (checked == true){
             toDoList[i].complete();
-            document.getElementById(idval).style.textDecoration = "none";
+            document.getElementById(idval).style.textDecoration = "line-through";
         }else{
             toDoList[i].complete();
-            //swap back later
-            document.getElementById(idval).style.textDecoration = "line-through";
+            document.getElementById(idval).style.textDecoration = "none";
 
         }
         display();
@@ -57,6 +56,8 @@ function display(){
     //dynamic menu
     for (let i = 0; i <= toDoList.length; i++)
      {
+         var temp = new todo();
+         temp = toDoList[i];
          list.innerHTML += '<form><input type = "checkbox" id ="todo'
          + i
          + ' onclick="checkIt('
@@ -64,11 +65,11 @@ function display(){
          + ')" name="todo'
          + i
          + ' value="'
-         + toDoList[i].completed
+         + temp.completed
          + '"><label for="todo'
          + i
          + '">'
-         + toDoList[i].content
+         + temp.content
          + '</label></form>'
      }
 }
