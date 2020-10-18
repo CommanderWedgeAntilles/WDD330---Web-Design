@@ -6,7 +6,7 @@ const todo = {
     id: Date.now(), 
     content: "Default Task", 
     completed:false, 
-    TODO: function(nID, nContent, nCompleted){
+    todo: function(nID, nContent, nCompleted){
         this.id=nID; 
         this.content = nContent; 
         this.completed = nCompleted;
@@ -14,6 +14,10 @@ const todo = {
     complete: function(){
         if(this.completed == false){this.completed = true;}
         else{this.completed = false;}
+    },
+    transfer: function(ntodo){this.id=ntodo.id; 
+        this.content = ntodo.content; 
+        this.completed = ntodo.completed;
     },
     get comp(){return this.completed;}
 };
