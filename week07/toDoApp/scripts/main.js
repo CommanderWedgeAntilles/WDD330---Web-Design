@@ -51,7 +51,7 @@ function checkIt(i){
 function display(){
 
     var list = document.getElementById("toDoList")
-    
+    list.innerHTML = "";
     //dynamic menu
     for (let i = 0; i < toDoList.length; i++)
      {
