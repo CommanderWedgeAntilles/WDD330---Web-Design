@@ -36,6 +36,7 @@ function checkIt(i){
             document.getElementById(idval).style.textDecoration = "none";
 
         }
+        display()
     }
 
 //display the toDo list
@@ -43,11 +44,11 @@ function display(){
 
     var list = document.getElementById("toDoList")
     
-    document.list.innerHTML = '<li><a href="#" id="menu">&equiv; Menu</a></li>'
+    document.list.innerHTML += '<form>';
     //dynamic menu
     for (let i = 0; i <= toDoList.length; i++)
      {
-         document.list.innerHTML += '<form><input type = "checkbox" id ="todo'
+         document.list.innerHTML += '<input type = "checkbox" id ="todo'
          + i
          + 'onclick="checkIt('
          + i
@@ -61,8 +62,6 @@ function display(){
          + toDoList[i].content
          + '</label>'
      }
-
-
-
-    
+     document.list.innerHTML += '</form>';
 }
+display()
