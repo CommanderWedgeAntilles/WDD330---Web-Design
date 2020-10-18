@@ -31,7 +31,7 @@ function addIt(){
     display();
 }
 
-addForm.addEventListener('addi', addIt, false);
+
 
 function checkIt(i){
         var idVal = "todo"+i;  
@@ -46,7 +46,11 @@ function checkIt(i){
         }
         display();
     }
-
+    
+for(let i=0;i<toDoList.length; i++){
+    var idVal = "todo"+i;
+    document.getElementById(idval).addEventListener('change', addIt, false);
+}
 //display the toDo list
 function display(){
 
