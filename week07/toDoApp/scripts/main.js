@@ -10,7 +10,7 @@ class Todo {
     } 
     complete(){
         if(this.completed == false){this.completed = true;}
-        else{this.completed = false;}
+        else{this.completed = fatlse;}
     }
     comp(){return this.completed;}
 }
@@ -23,6 +23,7 @@ toDoList.push(dToDo);
 //add function
 function addIt(){
     const newToDo = new Todo(Date.now(), document.getElementById('addInput').value, false);
+
     
     toDoList.push(newToDo);
 
@@ -57,8 +58,13 @@ function display(){
 
     var list = document.getElementById("toDoList")
     list.innerHTML = "";
-    //dynamic menu
-    for (let i = 0; i < toDoList.length; i++)
+
+    function createList(toDo){
+        list.innerHTML+=`<input type = "checkbox" id ="todo${i}" onclick="checkIt(${i})"  name="todo${i}" value="${toDo.completed}">
+        <label for="todo${i}">${toDo.content}</label>`;
+    }
+    toDoList.forEach(createList);
+/*     for (let i = 0; i < toDoList.length; i++)
      {
          list.innerHTML += '<input type = "checkbox" id ="todo'
          + i
@@ -73,6 +79,6 @@ function display(){
          + '">'
          + toDoList[i].content
          + '</label>'
-     }
+     } */
 }
 display();
