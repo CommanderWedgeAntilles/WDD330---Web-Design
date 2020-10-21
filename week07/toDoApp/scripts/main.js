@@ -18,8 +18,6 @@ class Todo {
 var dToDo = new Todo(Date.now(),"Default Task",false);
 toDoList.push(dToDo);
 
-//add an item to the list
-const addForm = document.forms['addItem'];
 
 
 //add function
@@ -31,8 +29,6 @@ function addIt(){
     display();
 }
 
-
-addForm.addEventListener('add', addIt(), false);
 
 function checkIt(i){
         var idVal = "todo"+i;  
@@ -64,7 +60,7 @@ function display(){
     //dynamic menu
     for (let i = 0; i < toDoList.length; i++)
      {
-         list.innerHTML += '<form><input type = "checkbox" id ="todo'
+         list.innerHTML += '<input type = "checkbox" id ="todo'
          + i
          + '" onclick="checkIt('
          + i
@@ -76,7 +72,7 @@ function display(){
          + i
          + '">'
          + toDoList[i].content
-         + '</label></form>'
+         + '</label>'
      }
 }
 display();
