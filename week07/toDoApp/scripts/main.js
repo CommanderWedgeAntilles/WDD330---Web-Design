@@ -56,12 +56,18 @@ function checkIt(i){
         localStorage.setItem("tDL",toDoList);
     }
 
-/* for(let i=0; i < toDoList.length; i++){
-    var idVal = "todo"+i;
-    document.getElementById(idval).addEventListener('change', checkIt(i), false);
-} */
+// for(let i=0; i < toDoList.length; i++){
+//     var idVal = "todo"+i;
+//     document.getElementById(idval).addEventListener('change', checkIt(i), false);
+// }
 
+function deleteIt(i){
+    var idvalB = "todoB"+i;
+    //delete the item from the list
+    toDoList.splice(i,1);
+    document.getElementById("d"+i).remove();
 
+}
 
 
 //display the toDo list
@@ -70,8 +76,8 @@ function display(){
     var list = document.getElementById("toDoList");
 
     function createList(toDo,i){
-        list.innerHTML +=`<div name="listItem"><input type = "checkbox" id ="todo${i}" onclick="checkIt(${i})"  name="todo${i}" value="${toDo.completed}">
-        <label for="todo${i}" id="todoL${i}">${toDo.content}</label><button id="todoB${i}" style="padding: 0; border: none; background: none;">X</button></div>`;
+        list.innerHTML +=`<div name="listItem" id="d${i}"><input type = "checkbox" id ="todo${i}" onclick="checkIt(${i})"  name="todo${i}" value="${toDo.completed}">
+        <label for="todo${i}" id="todoL${i}">${toDo.content}</label><button id="todoB${i}" onclick="deleteIt(${i})" style="padding: 0; border: none; background: none;">X</button></div>`;
         console.log(toDoList[i]);
         
     }
