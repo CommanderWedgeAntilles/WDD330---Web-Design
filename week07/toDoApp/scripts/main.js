@@ -1,48 +1,59 @@
-
+//import ls from './ls.js';
 //get the list array ready
 //create the todo object
 var toDoList = [];
+
+
+
 class Todo {
-    constructor(nID, nContent, nCompleted){
+    constructor(nID, nContent, nCompleted, nLine,nKill){
         this.id=nID; 
         this.content = nContent; 
         this.completed = nCompleted;
+        this.line = nLine;
+        this.kill = nKill;
     } 
     complete(){
         if(this.completed == false){this.completed = true;}
-        else{this.completed = fatlse;}
+        else{this.completed = false;}
     }
     comp(){return this.completed;}
 }
 
-var dToDo = new Todo(Date.now(),"Default Task",false);
+var dToDo = new Todo(Date.now(),"Default Task",false, "none", false);
 toDoList.push(dToDo);
 
 
 
 //add function
 function addIt(){
-    const newToDo = new Todo(Date.now(), document.getElementById('addInput').value, false);
-
+    const newToDo = new Todo(Date.now(), document.getElementById('addInput').value, false, "none",false);
     
     toDoList.push(newToDo);
+    localStorage.setItem("tDL",toDoList);
+    console.log(localStorage.getItem("tDL"));
+    
+
 
     display();
 }
 
 
 function checkIt(i){
-        var idVal = "todo"+i;  
-        var checked = document.getElementById(idval).value;
-        if (checked == true){
-            toDoList[i].complete();
-            document.getElementById(idval).style.textDecoration = "line-through";
-        }else{
-            toDoList[i].complete();
-            document.getElementById(idval).style.textDecoration = "none";
+        console.log(i);
+        //var idval = "todo"+i;
+        var idvalL = "todoL"+i;  
+        //var checked = document.getElementById(idval).value;
+        toDoList[i].complete();
 
+        if (toDoList[i].completed == true){
+            toDoList[i].line = "line-through";
+            document.getElementById(idvalL).style.textDecoration = toDoList[i].line;
+        }else{
+            toDoList[i].line = "none";
+            document.getElementById(idvalL).style.textDecoration = toDoList[i].line;
         }
-        display();
+        localStorage.setItem("tDL",toDoList);
     }
 
 /* for(let i=0; i < toDoList.length; i++){
@@ -56,29 +67,20 @@ function checkIt(i){
 //display the toDo list
 function display(){
 
-    var list = document.getElementById("toDoList")
-    list.innerHTML = "";
+    var list = document.getElementById("toDoList");
 
-    function createList(toDo){
-        list.innerHTML+=`<input type = "checkbox" id ="todo${i}" onclick="checkIt(${i})"  name="todo${i}" value="${toDo.completed}">
-        <label for="todo${i}">${toDo.content}</label>`;
+    function createList(toDo,i){
+        list.innerHTML +=`<div name="listItem"><input type = "checkbox" id ="todo${i}" onclick="checkIt(${i})"  name="todo${i}" value="${toDo.completed}">
+        <label for="todo${i}" id="todoL${i}">${toDo.content}</label><button id="todoB${i}" style="padding: 0; border: none; background: none;">X</button></div>`;
+        console.log(toDoList[i]);
+        
     }
-    toDoList.forEach(createList);
-/*     for (let i = 0; i < toDoList.length; i++)
-     {
-         list.innerHTML += '<input type = "checkbox" id ="todo'
-         + i
-         + '" onclick="checkIt('
-         + i
-         + ')" name="todo'
-         + i
-         + '" value="'
-         + toDoList[i].completed
-         + '"><label for="todo'
-         + i
-         + '">'
-         + toDoList[i].content
-         + '</label>'
-     } */
+
+    let i = (toDoList.length - 1);
+    createList(toDoList[i],i);
+
+    // for(let i = 0; i < toDoList.length; i++){
+    //     createList(toDoList[i],i);
+    // }
 }
 display();
