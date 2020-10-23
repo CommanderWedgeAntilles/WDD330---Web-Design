@@ -46,7 +46,7 @@ const links = [
 
 ];
 
-function createList(){
+function createTheList(){
     
     var list = document.getElementById("list")
     
@@ -63,5 +63,5 @@ function createList(){
      }
 
 }
-createList();
+createTheList();
 
