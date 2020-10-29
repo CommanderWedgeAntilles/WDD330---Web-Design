@@ -24,7 +24,10 @@ class HikesView {
                       <h3>Difficulty</h3>
                       <p>${hike.difficulty}</p>
                   </div>
-          </div>`;
+                  <div>
+                  
+                  </div>
+          </div>`;//add a button to clear full list and display only one full Hike
 
         return item;
     }
@@ -56,7 +59,7 @@ class HikesView {
                 <br>
                 <a href="index.html">Back</a>
                 
-            `;
+            `;// add a button to clear full hike and display only the list 
         document.querySelector('.input').style.display = block;
         parent.innerHTML = '';
         item.insertBefore(backButton, item.childNodes[0]);
