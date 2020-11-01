@@ -9,12 +9,187 @@
         <nav>
             <ol>
                 <li><a href="../index.html">index</a></li>
-                <li><a href="team/hiking-complete.html">MidTerm Todo app</a></li>
-                <li><a href="team2/index.html">team2</a></li>
+                <li><a href="team2/index.html">Team Work</a></li>
 
             </ol>
         </nav>
         <h1>Week 07: Notes</h1>
             <h2>Preface</h2>
+            <h2>Fetch API</h2>
+                <h3>About</h3>
+                    <p>"currently a living standard for requesting and sending data asynchronously across a network"</p>
+                <h3>Usage</h3>
+                    <ul>
+                        <li>fetch() requires you to put in the the URL of the resource you wish to fetch.</li>
+                        <li>an example of this is as follows: fetch('https://example.com/data').then(code that handles response).catch(code that handles things when stuff goes wrong)</li>
+                    </ul>
+                <h3>Response Interface</h3>
+                    <p>"The Fetch API introduced the Response interface that deals with the object that’s returned when the promise is fulfilled. Response objects have a number of properties and methods that allow us to process the response effectively."</p>
+                    <ul>
+                        <li>Each response object has an OK property that checks to see if the response is successful.</li>
+                        <li>OK uses the HTTP statis code</li>
+                        <li>access the HTTP Status code using the STATUS property</li>
+                        <li>200=success 201=resource created 204 request sucessful but not content returned</li>
+                        <li>OK returns true when the status property is between 200 and 299</li>
+                        <li> use if statement to check if the request was successful.</li>
+                    </ul>
+                    <p>
+                        const url = 'https:example.com/data';<br>
+                        fetch(url)<br>
+                        .then((response) => {<br>
+                            if(response.ok) {<br>
+                                return response;<br>
+                            }<br>
+                            throw Error(response.statusText);<br>
+                        })<br>
+                        .then( response => // do something with response )<br>
+                        .catch( error => console.log('There was an error!') )<br>
+                    </p>
+                    <p>other properties include headers, url, redirected, and type.  the latter returns basic, cors, error, or opaque as a string and each means a different thing</p>
+                <h3>Redirects</h3>
+                    <p>
+                        Used to redirect to another URL.<br>
+                        Example:<br>
+                        fetch(url)fetch(url)<br>
+                        .then( response => response.redirect(newURL)); // redirects to another URL<br>
+                        .then( // do something else )<br>
+                        .catch( error => console.log('There was an error: ', error))<br>
+                        .then( response => response.redirect(newURL)); // redirects to another URL<br>
+                        .then( // do something else )<br>
+                        .catch( error => console.log('There was an error: ', error))<br>
+                    </p>
+                <h3>Text Responses</h3>
+                    <p>
+                        The text() method takes a stream of text from the response, reads it to completion and then returns a promise that resolves to a USVSting object that can be treated as a string in JavaScript.<br>
+                        fetch(url)<br>
+                        .then( response => response.text() ); // transforms the text stream into a JavaScript string<br>
+                        .then( text => console.log(text) )<br>
+                        .catch( error => console.log('There was an error: ', error))<br>
+                    </p>
+                    <p>In this example, once the promise has been resolved, we use the string() method to return a promise that resolves with a string representation of the text that was returned. In the next statement, we take the result of the promise and use console.log() to display the text in the console.</p>
+                <h3>File Response</h3>
+                    <p>
+                        The blob() method is used to read a file of raw data, such as an image or a spreadsheet. Once it has read the whole file, it returns a promise that resolves with a blob object.<br>
+                        fetch(url)<br>
+                        .then( response => response.blob() ); // transforms the data into a blob object<br>
+                        .then( blob => console.log(blob.type) )<br>
+                        .catch( error => console.log('There was an error: ', error))<br>
+                    </p>
+                <h3>JSON Responses</h3>
+                    <p>
+                        JSON is probably the most common format for AJAX responses. The json() method is used to deal with these by transforming a stream of JSON data into a promise that resolves to a JavaScript object.<br>
+                        fetch(url)<br>
+                        .then( response => response.json() ); // transforms the JSON data into a JavaScript object<br>
+                        .then( data => console.log(Object.entries(data)) )<br>
+                        .catch( error => console.log('There was an error: ', error))<br>
+                    </p>
+                    <p>Again, this is very similar to the earlier examples, except this response returns some JSON data that is then resolved as a JavaScript object. This means we can manipulate the object using JavaScript. In the example below, the Object.entries() method is used to view the key and value pairs in the returned objec</p>
+                <h3>Creating Response Objects</h3>
+                    <p>
+                        const response = new Response( 'Hello!', {<br>
+                        ok: true,<br>
+                        status: 200,<br>
+                        statusText: 'OK',<br>
+                        type: 'cors',<br>
+                        url: '/api'<br>
+                    });<br>The first argument is the data that is to be returned (for example a text stream, file or JSON data). The second argument is an object that can be used to provide values for any of the properties listed above.
+                </p>
+                <h3>Request Interface</h3>
+                    <p>Request objects are created using the Request() constructor, and include the following properties</p>
+                    <ul>
+                        <li>url – The URL of the requested resource (the only property that is required).</li>
+                        <li> method – a string that specifies which HTTP method should be used for the request. By default, this is 'GET'.</li>
+                        <li>headers – This is a Headers object (see later section) that provides details of the request's headers.</li>
+                        <li>mode – Allows you to specify if CORS is used or not. CORS is enabled by default.</li>
+                        <li>cache – Allows you to specify how the request will use the browser's cache. For example, you can force it to request a resource and update the cache with the result, or you can force it to only look in the cache for the resource.</li>
+                        <li>credentials – Lets you specify if cookies should be allowed with the request.</li>
+                        <li>redirect – Specifies what to do if the response returns a redirect. There’s a choice of three values: 'follow' (the redirect is followed), 'error' (an error is thrown) or 'manual' (the user has to click on a link to follow the redirect).</li>
+                    </ul>
+                <h3>Hypertext Transfer Protocol</h3>
+                    <p>https://robm.me.uk/web-development/2013/09/20/http-verbs.html
+                        <br>"The Web is built upon the Hypertext Transfer Protocol, or HTTP. When a client (usually a browser) makes a request to a server, it contains information about which HTTP verb to use.HTTP verbs, also known as HTTP methodsare the what HTTP uses to tell the server what type of request is being made, which then determines the server will deal with the request.<br>
+
+                        The five most commonly used verbs when dealing with resources on the web are:<br>
+                        
+                        GET requests to retrieve resources<br>
+                        
+                        POST requests, usually used to create a resource but can actually perform any task<br>
+                        
+                        PUT requests toupsert, which means insert a resource or update it entirely<br>
+                        
+                        PATCH requests to make partial updates to a resource<br>
+                        
+                        DELETE requests to delete a resources.<br>?
+                        
+                        By default, a link in a web page will make a GET request. Forms are also submitted using a GET request by default, but they will often use a POST request." for Example:<br>"const request = new Request('https://example.com/data', {<br>
+                            method: 'GET',<br>
+                            mode: 'cors',<br>
+                            redirect: 'follow',<br>
+                            cache: 'no-cache'<br>
+                        });"
+                        <br>
+                        fetch(request)<br>
+                        .then( // do something with the response )<br>
+                        .catch( // handle any errors)<br>
+                    </p>
+                <h3>Header Interfaces</h3>
+            <h2>Using it</h2>
+                    <p>Example:<br>
+                        const url = 'https:example.com/data';<br>
+                        const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })<br>
+                        const request = (url,{<br>
+                            headers: headers<br>
+                        })<br>
+                        fetch(request)<br>
+                        .then( function(response) {<br>
+                            if(response.ok) {<br>
+                                return response;<br>
+                            }<br>
+                            throw Error(response.statusText);<br>
+                        })<br>
+                        .then( response => // do something with response )<br>
+                        .catch( error => console.log('There was an error!') )<br>
+                    </p>
+                    <h3>Recieve Info</h3>
+                        <p>The following is an example of a functioning use of this process:</p>
+                        <button id='number'>Number Fact</button>
+                        <button id='chuck'>Chuck Norris Fact</button>
+                        <div id='output'>
+                            Ajax response will appear here
+                        </div>
+                        <p>
+                            In the previous example we displayed a message to say we were waiting for a response. It is common for sites to use spinners (or egg timers in the old days!) to indicate that the site is waiting for something to happen.Ajax LoadandPreloaders.netare both good resources for creating a spinner graphic for your site.<br>
+                            http://www.ajaxload.info/<br>https://icons8.com/preloaders/
+                        </p>
+                    <h2>Sending Information</h2>
+                        <p>Ajax can be used to send information.</p>
+                        <p>https://jsonplaceholder.typicode.com/ is a good site to use as a place holder when you don't have a json file to use.</p>
+                        <p> the following is a funtioning example of this:</p>
+                        <form id='todo' action='https://jsonplaceholder.typicode.com/todos' method='POST'>
+                            <input type='text' name='task'  placeholder='Add Task' autofocus required>
+                            <button type='submit'>Add Task</button>
+                        </form>
+                        <script src='main.js'></script>
+                        <p> see the console for results</p>
+                        <p>
+                            "This code creates an event listener that first of all prevents the default behavior of the form, so it doesn't get submitted when the Add Task button is clicked. Next it creates a task object with a title property that is taken from what was entered in the form. It also has a completed property that has a default value of false . This object is then transformed into a JSON string using the JSON.stringify method and assigned to the variable data .<br>
+
+                            After this, we build the Headers and Request objects. Because we are sending JSON, we need to add headers of 'Accept': 'application/json' and 'Content-Type': 'application/json'. Because we aresendingdata, we need to ensure that the method property of the request object is POST so that a POST request is used to send the data. The most important property of the request object is body – this is where the data we want to send is placed. We use the data variable here, so that JSON is sent to the server.<br>
+                            
+                            Then we use the fetch() method to send the request and deal with the response. This creates a promise that resolves to a JSON object, so we use the json() method to create another promise that resolves to a JavaScript object. This object has a single property of id to mimic successfully saving the task to a database (as this would result in it being assigned an ID by the database)."<br>
+                        </p>
+                        <p>"Most forms will have an action attribute that specifies the URL to use if the form is sent without using Ajax. It will also have a method attribute that will specify the HTTP verb to use. These methods are available as properties of the form object, so we could use these properties to create a more generalized request object, as follows:"</p>
+                        <p>
+                            const request = new Request(form.action,<br>
+                            {<br>
+                                method: form.method,<br>
+                                header: headers,<br>
+                                body: data<br>
+                            }<br>
+                        </p>
+                        <h3>FormData</h3>
+                        <p>(See the Javascript File)</p>
+                        <p>In this function, we create a new FormData instance using the FormData() constructor function and provide the form as an argument. This does all the hard work of creating the task object for us.</p>
+                        <p>The FormData interface really comes into its own when a form contains files to upload. This was a notoriously difficult task in the past, often requiring the use of Flash or another third-party browser plugin to handle the upload process. The FormData instance will automatically create the necessary settings required, and take care of all the hard work if any file uploads are present in the form.</p>
     </body>
 </html>
