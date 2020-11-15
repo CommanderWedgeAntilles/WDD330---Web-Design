@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 10: Notes</title>
+    </head>
+    <body>
+        <nav>
+            <ol>
+                <li><a href="../index.html">index</a></li>
+                <li><a href="week04/teamwork/team.html">Team Work</a></li>
+            </ol>
+        </nav>
+        <h1>Week 10: Notes</h1>
+            <h2>Preface</h2>
+                <p>
+                </p>
+            <h2>Reading</h2>
+                <h3>The Window Object</h3>
+                    <h4>BOM (Browser Object Model)</h4>
+                        <p>Only makes sense in a browser environment. For example, BOM does not function in Node.js</p>
+                        <h5>Global</h5>
+                            <p>These are variables that are created without using the const , let or var keywords. Global variables can be accessed in all parts of the program.</p>
+                            <p>Global variables are actual properties of a global object. In a browser environment, the global object is the window object.</p>
+                            <p>dialogs, alert() , confirm() and prompt(), are a part of the window object</p>
+                    <h4>Finding Browser Info</h4>
+                        <p>Use the  window object to find unique info about the user's browser</p>
+                        <p>window.navigator.userAgent will show what version is currently being used</p>
+                        <p>The window.location property is an object that contains information about the URL of the current page. It contains a number of properties that provide information about different fragments of the URL.</p>
+                        <p>window.location.href provides the full URL as a string</p>
+                        <p>window.location.pathname returns the domain's string</p>
+                        <p>window.location.port returns the port number as a string</p>
+                        <p>window.location.search The search property returns a string that starts with a “?” followed by the query string parameters. It returns an empty string if there are no query string parameters.</p>
+                        <p>The window.location object also has the following methods:</p>
+                        <ul>
+                            <li>The reload() method can be used to force a reload of the current page. If it’s given a parameter of true , it will force the browser to reload the page from the server, instead of using a cached page.</li>
+                            <li>The assign() method can be used to load another resource from a URL provided as a parameter.</li>
+                            <li>The replace() method is almost the same as the assign() method, except the current page will not be stored in the session history, so the user will be unable to navigate back to it using the back button.</li>
+                            <li>The toString() method returns a string containing the whole URL.</li>
+                        </ul>
+                    <h4>Browser History</h4>
+                        <p>The window.history property can be used to access information about any previously visited pages in the current browser session. Avoid confusing this with the new HTML5 History API. (See http://www.sitepoint.com/javascript-history-pushstate/ post for details.)</p>
+                        <p>The window.history.length property shows how many pages have been visited before arriving at the current page.</p>
+                        <p>The window.history.go() method can be used to go to a specific page, where 0 is the current page.</p>
+                        <p>
+                            window.history.go(1); // goes forward 1 page<br>
+                            window.history.go(0); // reloads the current page<br>
+                            window.history.go(-1); // goes back 1 page<br>
+                        </p>
+                        <p>There are also the window.history.forward() and window.history.back() methods that can be used to navigate forwards and backwards by one page respectively, just like using the browser’s forward and back buttons.</p>
+                    <h4>Controlling Windows</h4>
+                        <p>A new window can be opened using the window.open() method. This takes the URL of the page to be opened as its first parameter, the window title as its second parameter, and a list of attributes as the third parameter. This can also be assigned to a variable, so the window can then be referenced later in the code:</p>
+                        <p>
+                            const popup = window.open('https://sitepoint.com','SitePoint','width=400,height=400,resizable=yes');
+                        </p>
+                        <p>The close() method can be used to close a window, assuming you have a reference to it.</p>
+                        <p>It is also possible to move a window using the window.moveTo() method. This takes two parameters that are the X and Y coordinates of the screen that the window is to be moved to:</p>
+                        <p>window.moveTo(0,0); // will move the window to the top-left corner of the screen</p>
+                        <p>You can resize a window using the window.resizeTo() method. This takes two parameters that specify the width and height of the resized window’s dimensions:</p>
+                        <p>window.resizeTo(600,400);</p>
+                        <p>These methods were largely responsible for giving JavaScript a bad name, as they were used for creating annoying pop-up windows that usually contained intrusive advertisements. It’s also a bad idea from a usability standpoint to resize or move a user’s window.</p>
+                        <h5>Screen Information</h5>
+                            <p>The window.screen object contains information about the screen the browser is displayed on. You can find out the height and width of the screen in pixels using the height and width properties respectively:</p>
+                            <p>The availHeight and availWidth can be used to find the height and width of the screen, excluding any operating system menus.</p>
+                            <p>The colorDepth property can be used to find the color bit depth of the user’s monitor, although there are few use cases for doing this other than collecting user statistics.</p>
+                            <p>The Screen object has more uses for mobile devices. It also allows you to do things like turn off the device’s screen, detect a change in its orientation or lock it in a specific orientation.</p>
+                        <h5>The Document Object</h5>
+                            <p>Each window object contains a document object. This object has properties and methods that deal with the page that has been loaded into the window. In Chapter 6, we covered the Document Object Model and the properties and methods used to manipulate items on the page. The document object contains a few other methods that are worth looking at.</p>
+                            <p>The write() method simply writes a string of text to the page. If a page has already loaded, it will completely replace the current document.. It is possible to include HTML in the string and this will become part of the DOM tree. For example, the following piece of code will create an h1 tag node and a child text node:</p>
+                            <p>document.write('<h1>Hello, world!</h1>');</p>
+                            <p>The document.write() method can also be used within a document inside  script  tags to inject a string into the markup. This will not overwrite the rest of the HTML on the page. The following example will place the text "Hello, world!" inside the h1 tags and the rest of the page will display as normal</p>
+                            <h1>
+                                <script>document.write("Hello, world!")</script>
+                            </h1>
+                            <p> this is generally a bad idea.</p>
+                    <h4>Cookies</h4>
+                        <p>Cookies are small files that are saved locally on a user’s computer. They were invented by Netscape as a way of getting round HTTP being a stateless protocol. This means that a browser does not remember anything from one request to another. So every time a user visits a page, nothing about any previous visits is remembered. Cookies can be used to sidestep this problem by storing information that can then be retrieved between requests.</p>
+                        <p>A restriction of cookies is that they can only be read by a web page from the same domain that set them. This is to stop sites being able to access information about users, such as other sites they have visited. Cookies are also limited to storing up to 4KB of data, although 20 cookies are allowed per domain, which can add up to quite a lot of data.</p>
+                        <p>Cookies can be used for personalizing a user’s browsing experience, storing user preferences, keeping track of user choices (such as a shopping cart), authentication and tracking users. The use of cookies for tracking purposes has been much maligned in recent years. Their use for data storage is starting to be replaced in many cases by the new HTML5 localStorage API as it allows more data to be stored. This is covered in Chapter 14. Cookies are still useful for retaining state information (such as if a user is logged in) because they’re passed between the client and server on every HTTP request.</p>
+                        <p>Cookies take the form of a text file that contain a list of name/value pairs separated by semicolons. For example, a cookie file might contain the following information:<br>"name=Superman; hero=true; city=Metropolis"</p>
+                        <h5>Create a Cookie</h5>
+                            <p>Step 1) Add flour....jk</p>
+                            <p>
+                                The document.cookie property acts like a special type of string. Assigning another cookie to it won’t overwrite the entire property, it will just append it to the end of the string. So we can add more cookies by assigning them to document.cookie: <br>document.cookie = 'name=Superman';<br> document.cookie = 'hero=true';<br>
+                                document.cookie = 'city=Metropolis';
+                            </p>
+                            <p>A cookie’s value can be changed by reassigning it to document.cookie using the same name but a different value.</p>
+                        <h5>Reading Cookies</h5>
+                            <p>To see the current contents of the cookie jar, simply enter document.cookie :</p>
+                            <p>We can use the split method to break the string into an array containing each name/value pair, then use a for of loop to iterate through the array:</p>
+                            <p>
+                                const cookies = document.cookie.split("; ");<br>
+                                for (crumb of cookies){<br>
+                                    const [key,value] = crumb.split("=");<br>
+                                    console.log(`The value of ${key} is ${value}`);<br>
+                                }<br>
+                            </p>
+                        <h5>Cookie Expire Date</h5>
+                            <p>Cookies are session cookies by default. This means they are deleted once a browser session is finished (when the user closes the browser tab or window). Cookies can be made persistent ― that is, lasting beyond the browser session ― by adding "; expires=date" to the end of the cookie when it’s set, where date is a date value in the UTC String format Day, DD-Mon-YYYY HH:MM:SS GMT . The following example sets a cookie to expire in one day’s time:</p>
+                            <p>
+                                const expiryDate = new Date(); <br>
+                                const tomorrow = expiryDate.getTime() + 1000 * 60 * 60 * 24;<br>
+                                expiryDate.setTime(tomorrow);<br>
+                                document.cookie = `name=Batman; expires=${ expiryDate.toUTCString()}`;<br>
+                            </p>
+                            <p>
+                                An alternative is to set the max-age value. This takes a value in seconds, but it wasn’t supported in Internet Explorer before version 10:
+                                <br>document.cookie = 'name=Batman; max-age=86400' // 86400 secs = 1 day
+                            </p>
+                        <h5>Path and Domain of Cookies</h5>
+                            <p>By default, cookies can only be read by pages inside the same directory and domain as the file was set. This is for security reasons so that access to the cookie is limited.
+
+                                The path can be changed so that any page in the root directory can read the cookie. It’s done by adding the string ; path=/ to the end of the cookie when it is set</p>
+                        <h5>Secure Cookies</h5>
+                            <p>
+                                Adding the string ; secure to the end of a cookie will ensure it’s only transmitted over a secure HTTPS network:<br>
+                                document.cookie = 'name=Batman; secure';
+                            </p>
+                        <h5>Deleting Cookies</h5>
+                            <p>
+                                To remove a cookie, you need to set it to expire at a time in the past:<br>
+
+                                document.cookie = 'name=Batman; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+                                <br>If a cookie is a session cookie, it will expire when the tab or window is closed.
+                            </p>
+
+                    <h4>Timing functions</h4>
+                        <p>
+                            The window.setTimeout() method accepts a callback to a function as its first parameter and a number of milliseconds as its second parameter. Try entering the following example into a console. It should show an alert dialog after three seconds (that’s 3000 milliseconds):<br>window.setTimeout( () => alert("Time's Up!"), 3000);
+                        </p>
+                        <p>Notice that the method returns an integer. This is an ID used to reference that particular timeout. It can also cancel the timeout using the window.clearTimeout() method.</p>
+                        <h5>setInterval()</h5>
+                            <p>he window.setInterval() method works in a similar way to window.setTimeout() , except that it will repeatedly invoke the callback function after every given number of milliseconds.</p>
+                            <p>
+                                The previous example used an anonymous function, but it is also possible to use a named function like so:
+                                <br>
+                                function chant(){ console.log('Beetlejuice'); }<br>
+                                Now we can set up the interval and assign it to a variable:
+                                <br>
+                                const summon = window.setInterval(chant,1000);
+                                <br>>
+                                This should show the message “Beetlejuice” in the console every second (1,000 milliseconds).
+                            </p>
+                            <p>To stop this, we can use the window.clearInterval() method and the variable repeat as an argument (this is because the window.setInterval() method returns its ID, so this will be assigned to the variable repeat ):<br>window.clearInterval(summon);</p>
+                        <h5>Animation</h5>
+                            <p>
+                                The setTimeOut() and setInterval() methods can be used to animate elements on a web page. As an example, let’s create a web page that shows a colored square, and make it rotate. Create a folder called animation that contains files called index.html , styles.css and main.js . Place the following code inside index.html :
+                                <br><a href="animation.html">Animation</a>
+                            </p>
+                            <h6>requestAnimationFrame</h6>
+                                <p>This method of the window object works in much the same way as the window.setInterval() method, although it has a number of improvements to optimize its performance. These include making the most of the browser’s built-in graphics-handling capabilities, and not running the animation when the tab is inactive, resulting in a much smoother performance. It’s supported in all major browsers, including Internet Explorer from version 10 onwards.</p>
+                                <p>This is similar to the earlier code, but this time we place the rotation code inside a function called rotate . The last line of this function uses the window.requestAnimationFrame() method and takes the rotate() function as an argument. This will then call the rotate() function recursively. The frame rate cannot be set using requestAnimationFrame() ; it’s usually 60 frames per second, although it’s optimized for the device being used.</p>
+                                <p>
+                                    To start the animation, we need to call the requestAnimationFrame() method, giving the rotate() function as an argument. This will return a unique ID that can be employed to stop the animation using the window.cancelAnimationFrame() method:<br>
+                                    cancelAnimationFrame(id);
+                                </p>
+                <h3>HTML5 APIs</h3>
+                    <h4>Development of APIs</h4>
+                    <h4>data Attribute</h4>
+                    <h4>local storage</h4>
+                    <h4>geolocation</h4>
+                    <h4>web workers</h4>
+                    <h4>multimedia</h4>
+                    <h4>Drawing shapes with canvas</h4>
+                    <h4>Shims and polyfills</h4>
+    </body>
+</html>

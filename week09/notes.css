@@ -1,0 +1,17 @@
+.ad-ad2 h1 span {
+    font-size: 30px;
+    color: #999999;
+    display: inline-block;
+}
+.ad-ad2 h1:hover span {
+    color: #484848;  
+    transform: rotate(10deg) translateX(40px) scale(1.5);
+}
+
+.myCanvas {
+    border: dotted 2px black;
+}
+.myCan {
+    border: dotted 2px black;
+}
+

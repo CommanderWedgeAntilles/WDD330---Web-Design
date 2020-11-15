@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 9: Notes</title>
+        <link rel="stylesheet" href="notes.css">
+    </head>
+    <body>
+        <nav>
+            <ol>
+                <li><a href="../index.html">index</a></li>
+                <li><a href="week09/team/team.html">Team Work</a></li>
+            </ol>
+        </nav>
+        <h1>Week 9: Notes</h1>
+            <h2>Preface</h2>
+                <p>
+                </p>
+            <h2>Reading</h2>
+                <h3>Translation and Transforms</h3>
+                    <h4>Translation</h4>
+                        <p>
+                            Translation functions allow you to move elements left, right, up, or down. These functions are similar to the behavior of position: relative; when declaring top and left , moving elements up and down or left and right along the x and y axes. When you employ a translation function, you’re moving elements without impacting the flow of the document. Unlike position: relative , which allows you to position an element either against its current position or against a parent or other ancestor, a translated element can only be moved relative to its current position.
+                            <br>
+                            The translate(x,y) function moves an element x from the left, and y from the top
+                        </p>
+                        <p>Example: transform: translate(45px, -45px);</p>
+                        <h1>Put your <span>dukes</span> up, sire</h1>
+                        <p>Transforms don’t work on inline elements. But that’s easy enough to fix. We’ll just add display: inline-block; to our span.</p>
+                    <h4>Scaling</h4>
+                        <p>The scale(x,y) function scales an element by the defined factors horizontally then vertically. If only one value is provided, it will be used for both the x and y values, growing or shrinking your element or pseudo-element while maintaining the original aspect ratio. For example, scale(1) would leave the element the same size, scale(2) would double its proportions, scale(0.5) would halve them, and so on. Providing different values will distort the element, as you’d expect:</p>
+                        <p>transform: scale(1.5, 0.25);</p>
+                        <p>
+                            As with translate , you can also use the scaleX(x) or scaleY(y) functions. These functions will scale only the horizontal dimensions or only the vertical dimensions respectively.
+                            <br>
+                            A scaled element will grow outwards from or shrink inwards towards its center; in other words, the element’s center will stay in the same place as its dimensions change. To change this default behavior, you can include the transform-origin property, which we’ll be covering a bit later.
+                        </p>
+                    <h4>Rotation</h4>
+                        <p>The rotate() function rotates an element around the point of origin by a specified angle value. As with scale , by default the point of origin is the element’s center. Generally, angles are declared in degrees, with positive degrees moving clockwise and negative moving counterclockwise. In addition to degrees, values can be provided in grads, radians, or turns, but we’ll just be sticking with degrees.</p>
+                    <h4>Skew</h4>
+                        <p>The skew(x,y) function specifies a skew along the x and y axes. As you’d expect, the x specifies the skew on the x axis, and the y specifies the skew on the y axis. If the second parameter is omitted, the skew will only occur on the x axis</p>
+                        
+
+                <h3>Canvas SVG and Drag + Drop</h3>
+                    <h4>Canvas</h4>
+                        <p>With HTML5’s Canvas API, we can draw anything we can imagine, all through JavaScript. This can improve the performance of our websites by avoiding the need to download images off the network. With canvas, we can draw shapes and lines, arcs and text, gradients and patterns. In addition, canvas gives us the power to manipulate pixels in images and even video. </p>
+                        <h5>History</h5>
+                            <p>Developed by Apple and then adopted by Mozila and Opera. Its origions are in Mac's Quartz 2D.</p>
+                        <h5>Creating a Canvas</h5>
+                            <canvas id="myCanvas" class="myCanvas" width="200" height="200">Sorry! Your browser doesn’t support Canvas.</canvas>
+                            <p>Set width and height in the html</p>
+                        <h5>Drawing</h5>
+                            <p>All drawing on the canvas happens via the Canvas JavaScript API. In this chapter, we’ll walk you through several different things you can draw onto the canvas element. Each example will have a new function, and all of these different functions live in a file called canvas.js.</p>
+                        <h5>Context</h5>
+                            <p>Once we’ve stored our canvas element in a variable, we then set up the canvas’scontext. The context is the place where your drawing is rendered. Currently, there’s only wide support for drawing to a two-dimensional context. The W3C Canvas spec defines the context in the CanvasRenderingContext2D interface. Most methods we’ll be using to draw onto the canvas are defined in this interface.</p>
+                        <h5>Color</h5>
+                            <p>On a real-life painting canvas, you must first saturate your brush with paint before you can begin. In the HTML5 canvas, you must do the same, and we do so with the strokeStyle or fillStyle properties. Both strokeStyle and fillStyle are set on a context object, and both take one of three values: a string representing a color, a CanvasGradient object, or a CanvasPattern object.</p>
+                        <h5>Shapes</h5>
+                            <p>Once we’ve defined the color of the stroke and the fill, we’re ready to start drawing! Let’s begin by drawing a rectangle. We can repeat the steps we just took: grabbing the canvas and the context, and setting a fill and stroke style. But now, we’ll draw a rectangle. We can do this by calling the fillRect and strokeRect methods. Both of these methods take the X and Y coordinates where you want to begin drawing the fill or the stroke, and the width and height of the rectangle. </p>
+                        <h5>Canvas Coords</h5>
+                            <p>As you may have gathered, the coordinate system in the canvas element is different from the Cartesian coordinate system you learned in math class. In the canvas coordinate system, the top-left corner is (0,0). If the canvas is 200 pixels by 200 pixels, then the bottom-right corner is (200,200)</p>
+                        <h5>Images</h5>
+                            <canvas id="myCan" class="myCan" width="200" height="200">Sorry! Your browser doesn’t support Canvas.</canvas>
+                            <p>
+                                We create a CanvasPattern by calling the createPattern method. createPattern takes two parameters: the image to create the pattern with, and how that image should be repeated. The repeat value is a string, and the valid values are the same as those in CSS: repeat , repeat-x , repeat-y , and no-repeat .
+                                <br>
+                                Instead of using a semitransparent blue fillStyle , let’s create a pattern using our bicycle image. We’ll do this in a new function called drawPattern . After doing the basics (grabbing the canvas and the context and setting a stroke), we must create an Image object and set its src property to our image
+                            </p>
+                            <p>Setting the src attribute will tell the browser to start downloading the image; however, if we try to use it immediately to create our gradient, we might run into some problems, because the image may still be loading (depending on whether it is in the browser cache). To be on the safe side, we’ll use the image’s onload property to create our pattern once the image has been fully loaded by the browser.</p>
+                            <p>In our onload event handler, we call createPattern , passing it the Image object and the string repeat so that our image repeats along both the X and Y axes. We store the results of createPattern in the variable pattern , and set the fillStyle to that variable.</p>
+                        <h5>Anonymous Functions</h5>
+                            <p>When you see an anonymous function defined as an event listener, it means that the anonymous function is being bound to that event. In other words, the code inside that anonymous function will be run when the load event is fired.</p>
+
+        <script src='notes.js'></script>
+    </body>
+</html>
