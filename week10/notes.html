@@ -158,7 +158,46 @@
                 <h3>HTML5 APIs</h3>
                     <h4>Development of APIs</h4>
                     <h4>data Attribute</h4>
+                        <p>
+                            The data- attribute is a way of embedding data in a web page using custom attributes that are ignored by the browser. They’re also private to a page, so are not intended to be used by an external service – their sole purpose is to be used by a JavaScript program. This means they’re perfect for adding data that can be used as a hook that the program utilizes to access information about a particular element on the page.
+                            <br>
+                            The names of these attributes can be decided by the developer, but they must use the following format:
+                        </p>
+                        <ul>
+                            <li>Start with data- .</li>
+                            <li>Contain only lowercase letters, numbers, hyphens, dots, colons or underscores.</li>
+                            <li>Include an optional string value.</li>
+                        </ul>
+                        <p>
+                            The information contained in the attributes can be used to identify particular elements. For example, all the elements with an attribute of data-dropdown could be identified as dropdown menu. The values of the attributes can also be used to filter different elements. For example, we could find all the elements that have a data-rating value of 3 or more.
+                            <br>
+                            Each element has a dataset property that can be used to access any data- attributes it contains. Here’s an example of some markup:
+                        </p>
+                        <div id='hero' data-powers='flight superSpeed'>
+                            Superman
+                        </div>
+                        <p>
+                            const superman = document.getElementById('hero');<br>
+                            const powers = superman.dataset.powers;
+                        </p>
+                        <p>Notice that the data- prefix is dropped. To access the attribute, powers is used as if it’s a property of the dataset object. If a data- attribute’s name contains hyphens, they are replaced with camel-case notation, so data-max-length would be accessed using dataset.maxLength .</p>
+                        <p>The support for the data- attribute is generally very good in modern browsers. Even Internet Explorer 8 has partial support! Some older browsers are unable to understand the dataset property, however, but any data- attribute can be found using the standard getAttribute method. So the previous code could be replaced with the following if you still need to support older browsers:</p>
+                        <p>const powers = superman.getAttribute('data-powers');</p>
+                        <p>The restriction of only using a string value can be overcome by encoding any JavaScript object or value as a JSON string, then performing type-conversion later, as required. For example, the value of data-max-length will return a string, but can easily be converted into a number using the following code:</p>
+                        <p>const maxLength = Number(element.dataset.maxLength);</p>
+                        <p>Data attributes provide a convenient way of adding data directly into the HTML markup, enabling a richer user experience.</p>
+                    
                     <h4>local storage</h4>
+                        <p>The Web Storage API provides a key-value store on the client’s computer that is similar to using cookies but has fewer restrictions, more storage capacity, and is generally easier to use. This makes it perfect for storing information about users, as well as storing application-specific information that can then be used during future sessions.</p>
+                        <ul><p>Unlike Cookies, Local Storage does the following:</p>
+                            <li>Information stored isnotshared with the server on every request.</li>
+                            <li>Information is available in multiple windows of the browser (but only if the domain is the same).</li>
+                            <li>Storage capacity limit is much larger than the 4KB limit for cookies ( There is no actual limit in the specification, but most browsers have a limit set at 5GB per domain.).</li>
+                            <li>Any data stored does not automatically expire as it does with cookies. This potentially makes cookies a better choice for something like showing a popup once a day.</li>
+                        </ul>
+                        <p>If a browser supports the Web Storage API, the window object will have a property called localStorage , which is a native object with a number of properties and methods used to store data. The information is saved in the form of key-value pairs, and the values can only be strings. There is also a sessionStorage object that works in the same way, although the data is only saved for the current session.</p>
+                        
+
                     <h4>geolocation</h4>
                     <h4>web workers</h4>
                     <h4>multimedia</h4>
