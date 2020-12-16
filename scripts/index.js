@@ -58,7 +58,13 @@ const links = [
     {
         label: "Week 11 Notes",
         url: "week11/notes.html"
+    },
+    {
+        label: "Major Project",
+        url: "Major_Project/index.html"
     }
+    
+
 
 ];
 
